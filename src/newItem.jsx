@@ -4,16 +4,17 @@ import dateformat from "dateformat";
 
 function NewItem({ add, cancel }) {
     const [name, setName] = React.useState("");
+    const [description, setDescription] = React.useState("");
     const [date, setDate] = React.useState(dateformat(new Date(), "yyyy-mm-dd"));
 
     const addItem = () => {
         const dueDate = new Date(date);
-        add({ name, timestampDue: dueDate.getTime(), complete: false, id: 0 });
+        add({ name, timestamp: dueDate.getTime(), complete: false, id: 0 ,description});
     };
     return (
         <div className="add-item-form">
             <div className="form-group">
-                <label htmlFor="addItemInput">Item description</label>
+                <label htmlFor="addItemInput">Item Name</label>
                 <input
                     type="text"
                     placeholder="Enter description..."
@@ -21,6 +22,17 @@ function NewItem({ add, cancel }) {
                     id="addItemInput"
                     value={name}
                     onChange={e => setName(e.target.value)}
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="addItemInput">Item description</label>
+                <input
+                    type="text"
+                    placeholder="Enter description..."
+                    className="form-control"
+                    id="addItemInput"
+                    value={description}
+                    onChange={e => setDescription(e.target.value)}
                 />
             </div>
             <div className="form-group">

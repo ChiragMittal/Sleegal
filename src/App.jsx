@@ -15,7 +15,7 @@ function App() {
     const loadItems = async () => {
         setLoading(true);
         const todoItems = await todoApi.get();
-        //console.log(todoItems)
+        console.log(todoItems)
         todoItems.map(item=>{
             if(isOverdue(item)){
                 complete(item.id)
@@ -31,15 +31,15 @@ function App() {
     }, []);
 
     const complete = async id => {
+        console.log(id)
         await todoApi.complete(id);
         loadItems()
     };
 
     const add = async item => {
 
-        const updatedItems = await todoApi.add(item);
+        await todoApi.add(item);
         loadItems()
-        setItems(updatedItems);
     };
 
     const filteredItems = items.filter(

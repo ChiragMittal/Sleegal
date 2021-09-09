@@ -38,8 +38,16 @@ app.get("/",async (req, res) => {
 
 app.post("/complete",express.json(),async (req, res) => {
     console.log(req.body.body.id)
-
     connection.query(`update todo set complete = true where id=${req.body.body.id}`, function(error, result){
+        if(error) throw error
+        res.status(200).send(result)
+    })
+    
+  })
+
+  app.post("/add",express.json(),async (req, res) => {
+
+    connection.query(`insert into todo(name,description,timsestamp,complete) values ("${req.body.body.name}","${req.body.body.description}",${req.body.body.timestamp},${req.body.body.complete})`, function(error, result){
         if(error) throw error
         res.status(200).send(result)
     })

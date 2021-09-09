@@ -17,11 +17,12 @@ function get() {
 }
 
 function complete(id) {
+    console.log(id)
     return new Promise(resolve => {
         
         setTimeout(() => resolve(axios.post('http://localhost:9000/complete',{
 			method:"POST",
-			body:({id:1}),
+			body:({id:id}),
 			headers: { 'Content-Type': 'applications/json','Access-Control-Allow-Origin':'*' }
 		})), delayMs)
     });
@@ -29,11 +30,13 @@ function complete(id) {
 
 function add(item) {
     return new Promise(resolve => {
-        const items = getFromStorage();
-        const newId = items.reduce((id, item) => (item.id >= id ? item.id + 1 : id), 1);
-        const updatedItems = [...items, { ...item, id: newId }];
-        localStorage.setItem(storageKey, JSON.stringify(updatedItems));
-        setTimeout(() => resolve(updatedItems), delayMs);
+
+        setTimeout(() => resolve(axios.post('http://localhost:9000/add',{
+			method:"POST",
+			body:({name:item.name,description:item.description,complete:item.complete,timestamp:item.timestamp}),
+			headers: { 'Content-Type': 'applications/json','Access-Control-Allow-Origin':'*' }
+		})), delayMs);
+        
     });
 }
 

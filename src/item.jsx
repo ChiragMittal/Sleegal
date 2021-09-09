@@ -6,7 +6,7 @@ import todoApi from "./todoApi";
 
 function Item({ item, completeItem }) {
     const itemClass = `list-group-item list-group-item-${isOverdue(item) ? "danger" : "info"}`;
-
+    console.log(item)
     return (
         <div>        
         
