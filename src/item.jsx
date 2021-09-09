@@ -14,7 +14,7 @@ function Item({ item, completeItem }) {
             <div className="item">
                 <span className={`item-title${item.complete ? " complete-item" : ""}`}>
                     <i className={isOverdue(item) ? "fas fa-exclamation-circle" : ""} />
-                    {`${item.name} `}
+                    {`Name:${item.name} - Description:${item.description}-Time:${dateformat(new Date(item.timsestamp), "dd-mmm-yyyy")}`}
                 </span>
                 {!item.complete && !isOverdue(item) ?
                     <button type="button" className="btn btn-link" onClick={completeItem}>
