@@ -17,7 +17,7 @@ function NewItem({ add, cancel }) {
                 <label htmlFor="addItemInput">Item Name</label>
                 <input
                     type="text"
-                    placeholder="Enter description..."
+                    placeholder="Enter Name..."
                     className="form-control"
                     id="addItemInput"
                     value={name}
