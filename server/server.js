@@ -1,8 +1,11 @@
 const express    = require('express');
 const morgan     = require("morgan");
 const app        = express();
-
+const path = require("path")
 const mysql = require('mysql')
+
+const buildPath = path.join(__dirname, '..', 'build');
+app.use(express.static(buildPath));
 
 app.use(function(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
@@ -20,7 +23,7 @@ const connection = mysql.createConnection({
     port:3306
 })
 
-const port =  9000;
+const port =  3000;
 app.use(morgan("dev"));
 
 app.use(express.urlencoded({extended: false}));
@@ -28,7 +31,8 @@ app.use(express.json())
 
 
 
-app.get("/",async (req, res) => {
+app.get("/all",async (req, res) => {
+    
     connection.query('SELECT * from todo', function(error, result){
         if(error) throw error
         res.status(200).send(result)

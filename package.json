@@ -1,9 +1,9 @@
 {
-  "name": "react-todo",
+  "name": "Sleegal",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.21.4",
+     "axios": "^0.21.4",
     "body-parser": "^1.19.0",
     "dateformat": "^3.0.3",
     "express": "^4.17.1",
@@ -16,19 +16,14 @@
     "sql": "^0.78.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start-client": "react-scripts start",
+    "build": "react-scripts build && (cd server && yarn install)",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "start": "cd server && yarn start"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app",
-      "prettier"
-    ],
-    "plugins": [
-      "prettier"
-    ]
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -42,9 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "eslint-config-prettier": "^4.3.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "prettier": "^1.18.2"
-  }
+  "proxy":"http://localhost:3000"
 }
