@@ -17,7 +17,7 @@ function get() {
 }
 
 function complete(id) {
-    console.log(id)
+
     return new Promise(resolve => {
         
         setTimeout(() => resolve(axios.post('http://localhost:9000/complete',{

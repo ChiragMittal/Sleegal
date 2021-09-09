@@ -15,7 +15,6 @@ function App() {
     const loadItems = async () => {
         setLoading(true);
         const todoItems = await todoApi.get();
-        console.log(todoItems)
         todoItems.map(item=>{
             if(isOverdue(item)){
                 complete(item.id)

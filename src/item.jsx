@@ -6,7 +6,6 @@ import todoApi from "./todoApi";
 
 function Item({ item, completeItem }) {
     const itemClass = `list-group-item list-group-item-${isOverdue(item) ? "danger" : "info"}`;
-    console.log(item)
     return (
         <div>        
         
@@ -14,7 +13,7 @@ function Item({ item, completeItem }) {
             <div className="item">
                 <span className={`item-title${item.complete ? " complete-item" : ""}`}>
                     <i className={isOverdue(item) ? "fas fa-exclamation-circle" : ""} />
-                    {`Name:${item.name} - Description:${item.description}-Time:${dateformat(new Date(item.timsestamp), "dd-mmm-yyyy")}`}
+                    {`Name:${item.name} - Description:${item.description} - Time:${dateformat(new Date(item.timsestamp), "dd-mmm-yyyy")}`}
                 </span>
                 {!item.complete && !isOverdue(item) ?
                     <button type="button" className="btn btn-link" onClick={completeItem}>
