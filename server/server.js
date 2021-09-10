@@ -23,7 +23,7 @@ const connection = mysql.createConnection({
     port:3306
 })
 
-const port =  3000;
+const port =  process.env.PORT ||3000;
 app.use(morgan("dev"));
 
 app.use(express.urlencoded({extended: false}));
